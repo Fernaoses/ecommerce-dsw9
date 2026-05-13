@@ -24,7 +24,13 @@ const sequelize = new Sequelize(
     port:           parseInt(process.env.DB_PORT) || 3306,
     dialect:        'postgres',
     logging:        false,
-    dialectOptions: getSslConfig()
+    dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
+    
   }
 );
 
